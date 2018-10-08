@@ -16,6 +16,13 @@ WSL配置
 - 解压后，**以管理员权限**打开 ubuntu.exe ，按照提示即可完成 WSL 的安装（包括设置ubuntu的用户名和密码）
 - 安装后想要使用 WSL，可以直接使用 win+R，输入 bash，或者在 cmd 里输入 bash 即可运行 WSL
 
+WSL 换源
+----------------------
+https://zhuanlan.zhihu.com/p/27187622
+
+换阿里云源可能会出现问题
+见下方
+
 WSL下的 qemu 配置过程
 ----------------------
 
@@ -34,6 +41,11 @@ sudo apt install libsdl-dev
 - windows 下和 linux 下目录的对应关系是：c:\xxx\yyy -> /mnt/c/xxx/yyy, /home/<user> -> wsl_install_directory/rootfs/home/<user>。 按照这个对应关系，可以使用`cd`命令找到并进入qemu目录。
 - 在 qemu 目录下执行 `./configure  --disable-kvm  --disable-werror --prefix=/usr/local/qemu    --target-list="i386-softmmu x86_64-softmmu"`
 - 如果一切正确，就可以执行`make`指令，之后执行`sudo make install`指令，配置结束。
+- 在sudo make install 中可能报错
+- libtool installed but not found in /usr/bin
+- 这个时候可以通过
+  apt-get install libtool-bin
+  解决
 
 WSL下的 lab1 配置过程
 ----------------------
